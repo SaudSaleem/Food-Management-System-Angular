@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 })
 export class AuthService {
 
-  private url: string = 'http://localhost:4000/api/'
+  private url: string = 'http://localhost:5000/api/'
   loginuser: any = '';
   error: any = ''
   status: number = 0

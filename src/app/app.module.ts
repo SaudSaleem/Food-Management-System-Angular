@@ -15,6 +15,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { CreateFoodComponent } from './create-food/create-food.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { MatInputModule } from '@angular/material/input';
     LoginComponent,
     DashboardComponent,
     DashboardComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    CreateFoodComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +42,7 @@ import { MatInputModule } from '@angular/material/input';
     RouterModule.forRoot([
       { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
       { path: 'login', component: LoginComponent },
+      {path: 'create-food', component: CreateFoodComponent},
       {path: '**', component: NotFoundComponent},
     ]),
   ],

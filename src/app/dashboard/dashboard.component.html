@@ -1,70 +1,64 @@
 <section class="container">
   <p class="text-color fw-bold fs-1 mt-3">Dashboard</p>
-<button class="mt-2 float-end" mat-raised-button color="accent" (click)="logout()">Logout</button>
-
+  <!-- <div class="d-flex flex-wrap"> -->
+    <button
+      class="mt-2 float-end"
+      mat-raised-button
+      color="accent"
+      (click)="logout()"
+    >
+      Logout
+    </button>
+    <button
+      class="mt-2 float-start"
+      mat-raised-button
+      color="primary"
+      (click)="createFood()"
+    >
+      Create Food
+    </button>
+  <!-- </div> -->
 </section>
+<br>
 <section class="container mt-4">
   <div class="d-flex">
     <mat-card class="card-width m-1">
       <mat-card-title-group>
         <mat-card-title>Shiba Inu</mat-card-title>
         <mat-card-subtitle>Large</mat-card-subtitle>
-        <img mat-card-lg-image src="https://health.clevelandclinic.org/wp-content/uploads/sites/3/2019/06/cropped-GettyImages-643764514.jpg" >
+        <img
+          mat-card-lg-image
+          src="https://health.clevelandclinic.org/wp-content/uploads/sites/3/2019/06/cropped-GettyImages-643764514.jpg"
+        />
       </mat-card-title-group>
       <mat-card-content>
-        {{longText}}
+        {{ longText }}
       </mat-card-content>
     </mat-card>
     <mat-card class="card-width m-1">
       <mat-card-title-group>
         <mat-card-title>Shiba Inu</mat-card-title>
         <mat-card-subtitle>Large</mat-card-subtitle>
-        <img mat-card-lg-image src="https://cdn.pixabay.com/photo/2016/12/26/17/28/spaghetti-1932466__340.jpg" >
+        <img
+          mat-card-lg-image
+          src="https://cdn.pixabay.com/photo/2016/12/26/17/28/spaghetti-1932466__340.jpg"
+        />
       </mat-card-title-group>
       <mat-card-content>
-        {{longText}}
+        {{ longText }}
       </mat-card-content>
     </mat-card>
     <mat-card class="card-width m-1">
       <mat-card-title-group>
         <mat-card-title>Shiba Inu</mat-card-title>
         <mat-card-subtitle>Large</mat-card-subtitle>
-        <img mat-card-lg-image src="https://cdn-prod.medicalnewstoday.com/content/images/articles/322/322303/selection-of-chinese-food-that-may-cause-chinese-restaurant-syndrome.jpg" >
+        <img
+          mat-card-lg-image
+          src="https://cdn-prod.medicalnewstoday.com/content/images/articles/322/322303/selection-of-chinese-food-that-may-cause-chinese-restaurant-syndrome.jpg"
+        />
       </mat-card-title-group>
       <mat-card-content>
-        {{longText}}
-      </mat-card-content>
-    </mat-card>
-  </div>
-  <div class="d-flex">
-    <mat-card class="card-width m-1">
-      <mat-card-title-group>
-        <mat-card-title>Shiba Inu</mat-card-title>
-        <mat-card-subtitle>Large</mat-card-subtitle>
-        <img mat-card-lg-image src="https://cdn-prod.medicalnewstoday.com/content/images/articles/322/322303/selection-of-chinese-food-that-may-cause-chinese-restaurant-syndrome.jpg" >
-      </mat-card-title-group>
-      <mat-card-content>
-        {{longText}}
-      </mat-card-content>
-    </mat-card>
-    <mat-card class="card-width m-1">
-      <mat-card-title-group>
-        <mat-card-title>Shiba Inu</mat-card-title>
-        <mat-card-subtitle>Large</mat-card-subtitle>
-        <img mat-card-lg-image src="https://health.clevelandclinic.org/wp-content/uploads/sites/3/2019/06/cropped-GettyImages-643764514.jpg" >
-      </mat-card-title-group>
-      <mat-card-content>
-        {{longText}}
-      </mat-card-content>
-    </mat-card>
-    <mat-card class="card-width m-1">
-      <mat-card-title-group>
-        <mat-card-title>Shiba Inu</mat-card-title>
-        <mat-card-subtitle>Large</mat-card-subtitle>
-        <img mat-card-lg-image src="https://cdn.pixabay.com/photo/2016/12/26/17/28/spaghetti-1932466__340.jpg" >
-      </mat-card-title-group>
-      <mat-card-content>
-        {{longText}}
+        {{ longText }}
       </mat-card-content>
     </mat-card>
   </div>
@@ -73,30 +67,80 @@
       <mat-card-title-group>
         <mat-card-title>Shiba Inu</mat-card-title>
         <mat-card-subtitle>Large</mat-card-subtitle>
-        <img mat-card-lg-image src="https://cdn.pixabay.com/photo/2016/12/26/17/28/spaghetti-1932466__340.jpg" >
+        <img
+          mat-card-lg-image
+          src="https://cdn-prod.medicalnewstoday.com/content/images/articles/322/322303/selection-of-chinese-food-that-may-cause-chinese-restaurant-syndrome.jpg"
+        />
       </mat-card-title-group>
       <mat-card-content>
-        {{longText}}
+        {{ longText }}
       </mat-card-content>
     </mat-card>
     <mat-card class="card-width m-1">
       <mat-card-title-group>
         <mat-card-title>Shiba Inu</mat-card-title>
         <mat-card-subtitle>Large</mat-card-subtitle>
-        <img mat-card-lg-image src="https://cdn-prod.medicalnewstoday.com/content/images/articles/322/322303/selection-of-chinese-food-that-may-cause-chinese-restaurant-syndrome.jpg" >
+        <img
+          mat-card-lg-image
+          src="https://health.clevelandclinic.org/wp-content/uploads/sites/3/2019/06/cropped-GettyImages-643764514.jpg"
+        />
       </mat-card-title-group>
       <mat-card-content>
-        {{longText}}
+        {{ longText }}
       </mat-card-content>
     </mat-card>
     <mat-card class="card-width m-1">
       <mat-card-title-group>
         <mat-card-title>Shiba Inu</mat-card-title>
         <mat-card-subtitle>Large</mat-card-subtitle>
-        <img mat-card-lg-image src="https://health.clevelandclinic.org/wp-content/uploads/sites/3/2019/06/cropped-GettyImages-643764514.jpg" >
+        <img
+          mat-card-lg-image
+          src="https://cdn.pixabay.com/photo/2016/12/26/17/28/spaghetti-1932466__340.jpg"
+        />
       </mat-card-title-group>
       <mat-card-content>
-        {{longText}}
+        {{ longText }}
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="d-flex">
+    <mat-card class="card-width m-1">
+      <mat-card-title-group>
+        <mat-card-title>Shiba Inu</mat-card-title>
+        <mat-card-subtitle>Large</mat-card-subtitle>
+        <img
+          mat-card-lg-image
+          src="https://cdn.pixabay.com/photo/2016/12/26/17/28/spaghetti-1932466__340.jpg"
+        />
+      </mat-card-title-group>
+      <mat-card-content>
+        {{ longText }}
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="card-width m-1">
+      <mat-card-title-group>
+        <mat-card-title>Shiba Inu</mat-card-title>
+        <mat-card-subtitle>Large</mat-card-subtitle>
+        <img
+          mat-card-lg-image
+          src="https://cdn-prod.medicalnewstoday.com/content/images/articles/322/322303/selection-of-chinese-food-that-may-cause-chinese-restaurant-syndrome.jpg"
+        />
+      </mat-card-title-group>
+      <mat-card-content>
+        {{ longText }}
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="card-width m-1">
+      <mat-card-title-group>
+        <mat-card-title>Shiba Inu</mat-card-title>
+        <mat-card-subtitle>Large</mat-card-subtitle>
+        <img
+          mat-card-lg-image
+          src="https://health.clevelandclinic.org/wp-content/uploads/sites/3/2019/06/cropped-GettyImages-643764514.jpg"
+        />
+      </mat-card-title-group>
+      <mat-card-content>
+        {{ longText }}
       </mat-card-content>
     </mat-card>
   </div>

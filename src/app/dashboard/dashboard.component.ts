@@ -20,4 +20,8 @@ export class DashboardComponent implements OnInit {
       this.router.navigate(['/login']);
     });
   }
+
+  createFood() {
+    this.router.navigate(['/create-food']);
+  }
 }
