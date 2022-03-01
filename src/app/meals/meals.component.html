@@ -1,12 +1,13 @@
 <div class="container">
   <p class="text-color fw-bold fs-2 mt-3">Client Weekly Meal</p>
   <br />
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mt-3">
+  <div class="text fw-bold fs-4 mt-3 text-capitalize">{{dishName}}</div>
+  <table mat-table [dataSource]="subscriedService.getSubscribedUser?.dates" class="mat-elevation-z8 mt-3">
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr
       mat-row
       *matRowDef="let row; columns: displayedColumns"
-      (click)="rowData(row)"
+      (click)="optMeal(row)"
     ></tr>
 
     <!-- Name Column -->

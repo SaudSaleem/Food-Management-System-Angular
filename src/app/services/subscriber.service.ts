@@ -28,8 +28,18 @@ export class SubscriberService {
   userSubscribed(id: number) {
     return this.http.post(this.url + 'get/subscried-user', {user_id: id}).pipe(
       map((result: any) => {
-        console.log("result", result)
+        console.log("result userSubscribed", result.user)
+        this.setSubscribedUser = result.user
+      })
+    )
+  }
+
+  optMeal(body: any, id: any) {
+    return this.http.put(this.url + 'opt-meal', {body, user_id: id}).pipe(
+      map((result: any) => {
+        console.log("result subscribed", result)
         this.setSubscribedUser = result
+        console.log("getSubscribed", this.getSubscribedUser)
       })
     )
   }
