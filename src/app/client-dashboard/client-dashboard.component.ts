@@ -2,15 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from '../dialog/dialog.component';
 import { DishesService } from '../services/dishes.service';
+import * as moment from 'moment';
+import { SubscriberService } from '../services/subscriber.service';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
+  selector: 'app-client-dashboard',
+  templateUrl: './client-dashboard.component.html',
+  styleUrls: ['./client-dashboard.component.css'],
 })
-export class DashboardComponent implements OnInit {
+export class ClientDashboardComponent implements OnInit {
   longText: string =
     'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.';
 
@@ -18,7 +19,8 @@ export class DashboardComponent implements OnInit {
     private service: AuthService,
     private router: Router,
     public dialog: MatDialog,
-    public dishService: DishesService
+    public dishService: DishesService,
+    private subscribeService: SubscriberService
   ) {
     this.fetchDishes();
   }
@@ -29,37 +31,27 @@ export class DashboardComponent implements OnInit {
   logout() {
     this.service.logout(this.service?.getLoginUser?.email).subscribe(() => {
       localStorage.removeItem('token');
-      localStorage.removeItem('loginUser')
+      localStorage.removeItem('loginUser');
       this.router.navigate(['/login']);
     });
-  }
-
-  createFood() {
-    this.router.navigate(['/create-food']);
-  }
-  openDialog(): void {
-    // const dialogRef =
-    const dialog = this.dialog.open(DialogComponent, {
-      // width: '250px',
-      data: { dialog: 'create' },
-    });
-    dialog.afterClosed().subscribe(() => {});
-  }
-
-  editDialog(dish: any) {
-    const dialog = this.dialog.open(DialogComponent, {
-      // width: '250px',
-      data: { dish, dialog: 'edit' },
-    });
-    dialog.afterClosed().subscribe(() => {});
   }
 
   fetchDishes() {
     this.dishService.fetchDishes().subscribe(() => {});
   }
 
-  deleteDish(id: number) {
-    console.log(id);
-    this.dishService.deleteDish(id).subscribe(() => {});
+  subscribe(dish: any) {
+    var dates = [];
+    for (let i = 0; i < 6; i++) {
+      let date = moment().add(i, 'days').format('YYYY-MM-DD');
+      dates.push({date, meal: `meal ${i+ 1}`, status: 'accepted'});
+    }
+    this.subscribeService
+      .subscriber({
+        user_id: this.service.getLoginUser.id,
+        dish_id: dish.id,
+        dates: dates,
+      })
+      .subscribe(() => {});
   }
 }

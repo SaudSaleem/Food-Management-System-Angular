@@ -12,10 +12,21 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './services/auth-guard.service';
 import {MatCardModule} from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar'
+import { MatSidenavModule } from '@angular/material/sidenav'
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import {MatDialogModule} from '@angular/material/dialog'
+import {MatIconModule} from '@angular/material/icon'
+import {MatTableModule} from '@angular/material/table';
 import { CreateFoodComponent } from './create-food/create-food.component';
+import { DialogComponent } from './dialog/dialog.component';
+import { DishesService } from './services/dishes.service';
+import { SubscribersComponent } from './subscribers/subscribers.component';
+import { ClientDashboardComponent } from './client-dashboard/client-dashboard.component';
+import { MealsComponent } from './meals/meals.component';
+import { SubscriberService } from './services/subscriber.service';
 
 
 @NgModule({
@@ -25,7 +36,11 @@ import { CreateFoodComponent } from './create-food/create-food.component';
     DashboardComponent,
     DashboardComponent,
     NotFoundComponent,
-    CreateFoodComponent
+    CreateFoodComponent,
+    DialogComponent,
+    SubscribersComponent,
+    ClientDashboardComponent,
+    MealsComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,15 +53,23 @@ import { CreateFoodComponent } from './create-food/create-food.component';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatDialogModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatTableModule,
     // MatFormFieldModule,
     RouterModule.forRoot([
-      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-      { path: 'login', component: LoginComponent },
-      {path: 'create-food', component: CreateFoodComponent},
+      { path: 'login', component: LoginComponent, data: { open : false } },
+      { path: 'admin/dashboard', component: DashboardComponent, canActivate: [AuthGuard], data: { open : true } },
+      { path: 'dashboard', component: ClientDashboardComponent, canActivate: [AuthGuard], data: { open : true } },
+      { path: 'subscriber', component: SubscribersComponent, canActivate: [AuthGuard], data: { open : true } },
+      { path: 'meals', component: MealsComponent, canActivate: [AuthGuard], data: { open : true } },
+      {path: 'create-food', component: CreateFoodComponent, canActivate: [AuthGuard]},
       {path: '**', component: NotFoundComponent},
     ]),
   ],
-  providers: [AuthGuard, AuthService],
+  providers: [AuthService, AuthGuard, DishesService, SubscriberService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
           'token',
           JSON.stringify(this.service.getLoginUser.token)
         );
-        this.router.navigate(['/dashboard']);
+      this.service.getLoginUser.role == "admin" ? this.router.navigate(['/admin/dashboard']) :  this.router.navigate(['/dashboard']);
       }
       else this.inValidLogin = true;
     });
