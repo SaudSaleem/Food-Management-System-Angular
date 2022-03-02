@@ -4,6 +4,8 @@ import { AuthService } from '../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
 import { DishesService } from '../services/dishes.service';
+import { MatSnackBar,  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition, } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,15 +15,20 @@ import { DishesService } from '../services/dishes.service';
 export class DashboardComponent implements OnInit {
   longText: string =
     'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.';
-
+  durationInSeconds = 10;
   constructor(
     private service: AuthService,
     private router: Router,
     public dialog: MatDialog,
-    public dishService: DishesService
+    public dishService: DishesService,
+    private snackBar: MatSnackBar,
+    // private horizontalPos: MatSnackBarHorizontalPosition,
+    // private verticalPos: MatSnackBarVerticalPosition
   ) {
     this.fetchDishes();
   }
+  horizontalPosition: MatSnackBarHorizontalPosition = 'end';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
   ngOnInit(): void {
     console.log(this.service.getLoginUser);
@@ -29,7 +36,7 @@ export class DashboardComponent implements OnInit {
   logout() {
     this.service.logout(this.service?.getLoginUser?.email).subscribe(() => {
       localStorage.removeItem('token');
-      localStorage.removeItem('loginUser')
+      localStorage.removeItem('loginUser');
       this.router.navigate(['/login']);
     });
   }
@@ -43,7 +50,13 @@ export class DashboardComponent implements OnInit {
       // width: '250px',
       data: { dialog: 'create' },
     });
-    dialog.afterClosed().subscribe(() => {});
+    dialog.afterClosed().subscribe(() => {
+      this.snackBar.open('Dish create successfully!', 'dismiss', {
+        duration: this.durationInSeconds * 1000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition
+      });
+    });
   }
 
   editDialog(dish: any) {
@@ -51,7 +64,13 @@ export class DashboardComponent implements OnInit {
       // width: '250px',
       data: { dish, dialog: 'edit' },
     });
-    dialog.afterClosed().subscribe(() => {});
+    dialog.afterClosed().subscribe(() => {
+      this.snackBar.open('Dish updated successfully!', 'dismiss', {
+        duration: this.durationInSeconds * 1000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition
+      });
+    });
   }
 
   fetchDishes() {
@@ -61,5 +80,10 @@ export class DashboardComponent implements OnInit {
   deleteDish(id: number) {
     console.log(id);
     this.dishService.deleteDish(id).subscribe(() => {});
+  }
+
+  openSnackBar() {
+    
+   
   }
 }

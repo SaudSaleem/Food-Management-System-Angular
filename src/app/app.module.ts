@@ -20,6 +20,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatDialogModule} from '@angular/material/dialog'
 import {MatIconModule} from '@angular/material/icon'
 import {MatTableModule} from '@angular/material/table';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { CreateFoodComponent } from './create-food/create-food.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { DishesService } from './services/dishes.service';
@@ -27,6 +28,8 @@ import { SubscribersComponent } from './subscribers/subscribers.component';
 import { ClientDashboardComponent } from './client-dashboard/client-dashboard.component';
 import { MealsComponent } from './meals/meals.component';
 import { SubscriberService } from './services/subscriber.service';
+import { PaymentComponent } from './payment/payment.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 
 @NgModule({
@@ -41,6 +44,8 @@ import { SubscriberService } from './services/subscriber.service';
     SubscribersComponent,
     ClientDashboardComponent,
     MealsComponent,
+    PaymentComponent,
+    AboutUsComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,13 +63,16 @@ import { SubscriberService } from './services/subscriber.service';
     MatToolbarModule,
     MatSidenavModule,
     MatTableModule,
-    // MatFormFieldModule,
+    MatSnackBarModule,
+    MatFormFieldModule,
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent, data: { open : false } },
       { path: 'admin/dashboard', component: DashboardComponent, canActivate: [AuthGuard], data: { open : true } },
       { path: 'dashboard', component: ClientDashboardComponent, canActivate: [AuthGuard], data: { open : true } },
       { path: 'subscriber', component: SubscribersComponent, canActivate: [AuthGuard], data: { open : true } },
       { path: 'meals', component: MealsComponent, canActivate: [AuthGuard], data: { open : true } },
+      { path: 'payment', component: PaymentComponent, canActivate: [AuthGuard], data: { open : true } },
+      { path: 'about', component: AboutUsComponent, canActivate: [AuthGuard], data: { open : true } },
       {path: 'create-food', component: CreateFoodComponent, canActivate: [AuthGuard]},
       {path: '**', component: NotFoundComponent},
     ]),

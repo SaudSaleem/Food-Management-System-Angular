@@ -7,8 +7,10 @@
       routerLink="/dashboard">Menus</button>
       <button mat-button [class.active]="eventUrl === '/meals'"
       routerLink="/meals">Meals</button>
-      <button mat-button>Payment</button>
-      <button mat-button>About</button>
+      <button mat-button [class.active]="eventUrl === '/payment'"
+      routerLink="/payment">Payment</button>
+      <button mat-button [class.active]="eventUrl === '/about'"
+      routerLink="/about">About</button>
   </div>
   <span class="spacer"></span>
   <button mat-raised-button color="accent" (click)="logout()">Logout</button>

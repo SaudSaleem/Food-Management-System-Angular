@@ -20,9 +20,10 @@ export class ClientDashboardComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog,
     public dishService: DishesService,
-    private subscribeService: SubscriberService
+    public subscribeService: SubscriberService
   ) {
     this.fetchDishes();
+    this.userSubscribed()
   }
 
   ngOnInit(): void {
@@ -52,6 +53,11 @@ export class ClientDashboardComponent implements OnInit {
         dish_id: dish.id,
         dates: dates,
       })
+      .subscribe(() => {});
+  }
+  userSubscribed() {
+    this.subscribeService
+      .userSubscribed(this.service.getLoginUser.id)
       .subscribe(() => {});
   }
 }

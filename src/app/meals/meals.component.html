@@ -1,7 +1,7 @@
 <div class="container">
   <p class="text-color fw-bold fs-2 mt-3">Client Weekly Meal</p>
   <br />
-  <div class="text fw-bold fs-4 mt-3 text-capitalize">{{dishName}}</div>
+  <div class="text fw-bold fs-4 mt-3 text-capitalize">{{subscriedService.getDishName}}</div>
   <table mat-table [dataSource]="subscriedService.getSubscribedUser?.dates" class="mat-elevation-z8 mt-3">
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr
