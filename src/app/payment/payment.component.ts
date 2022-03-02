@@ -37,6 +37,7 @@ export class PaymentComponent implements OnInit {
       profile: [''],
     });
     this.userSubscribed();
+    this.fetchPaymentStatus()
     this.dataSource = this.subscriedService.getSubscribedUser?.dates;
   }
   uploadForm = new FormGroup({});
@@ -73,11 +74,7 @@ export class PaymentComponent implements OnInit {
     formData.append('dish_id', this.subscriedService.getSubscribedUser.dish_id);
     formData.append('total_meals', this.subscriedService.getTotalMeals);
     formData.append('total_amount', this.subscriedService.getTotalAmount);
-    // formData.get('file')
-    console.log(
-      'yha se chala ha',
-      this.subscriedService.getSubscribedUser.dish_id
-    );
+    formData.append('status', 'pending');
     this.http
       .post('http://localhost:5000/api/upload-proof', formData)
       .subscribe(() => {
@@ -87,5 +84,10 @@ export class PaymentComponent implements OnInit {
           verticalPosition: this.verticalPosition,
         });
       });
+  }
+
+  fetchPaymentStatus() {
+    this.subscriedService
+      .fetchPaymentStatus(this.authService.getLoginUser.id).subscribe(() =>{})
   }
 }

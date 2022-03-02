@@ -9,11 +9,18 @@ export class AuthService {
   loginuser: any = '';
   error: any = ''
   status: number = 0
+  allUsers: any = []
   set setLoginUser(value :any) {
     this.loginuser = value
   }
   get getLoginUser(): any {
     return this.loginuser
+  }
+  set setAllUsers(value: any) {
+    this.allUsers = value
+  }
+  get getAllUsers() {
+    return this.allUsers
   }
   constructor(private http: HttpClient) { 
     this.setLoginUser = JSON.parse(localStorage.getItem('loginUser')|| '{}')
@@ -39,4 +46,12 @@ export class AuthService {
   logout(email: string) {
     return this.http.post(this.url + 'logout', {email})
   }
+
+  fetchAllUsers() {
+    return this.http.get(this.url + 'users').pipe(
+      map((result: any) => {
+        this.setAllUsers = result
+      }
+    ))
+    }
 }

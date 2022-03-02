@@ -30,6 +30,9 @@ import { MealsComponent } from './meals/meals.component';
 import { SubscriberService } from './services/subscriber.service';
 import { PaymentComponent } from './payment/payment.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { AdminMealsComponent } from './admin-meals/admin-meals.component';
+import { AdminPaymentComponent } from './admin-payment/admin-payment.component';
+import { PaymentService } from './services/payment.service';
 
 
 @NgModule({
@@ -46,6 +49,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
     MealsComponent,
     PaymentComponent,
     AboutUsComponent,
+    AdminMealsComponent,
+    AdminPaymentComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,13 +76,15 @@ import { AboutUsComponent } from './about-us/about-us.component';
       { path: 'dashboard', component: ClientDashboardComponent, canActivate: [AuthGuard], data: { open : true } },
       { path: 'subscriber', component: SubscribersComponent, canActivate: [AuthGuard], data: { open : true } },
       { path: 'meals', component: MealsComponent, canActivate: [AuthGuard], data: { open : true } },
+      { path: 'admin/meals', component: AdminMealsComponent, canActivate: [AuthGuard], data: { open : true } },
       { path: 'payment', component: PaymentComponent, canActivate: [AuthGuard], data: { open : true } },
+      { path: 'admin/payment', component: AdminPaymentComponent, canActivate: [AuthGuard], data: { open : true } },
       { path: 'about', component: AboutUsComponent, canActivate: [AuthGuard], data: { open : true } },
       {path: 'create-food', component: CreateFoodComponent, canActivate: [AuthGuard]},
       {path: '**', component: NotFoundComponent},
     ]),
   ],
-  providers: [AuthService, AuthGuard, DishesService, SubscriberService],
+  providers: [AuthService, AuthGuard, DishesService, SubscriberService, PaymentService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
